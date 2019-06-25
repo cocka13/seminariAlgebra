@@ -1,0 +1,115 @@
+﻿@model IEnumerable<Aplikacija.Models.ViewModeli.SeminarViewModel>
+
+@{
+    ViewBag.Title = "Seminari";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-inline">
+
+        @Html.Label("", "Naziv seminara: ")
+        @Html.TextBox("pretraga")
+
+        <input type="submit" value="Pretraži" class="btn btn-default" />
+
+        @Html.Label("", "")
+        @Html.DropDownList("popunjenost", new SelectListItem[]{
+                    new SelectListItem() {Text = "Popunjeni", Value="true"},
+                    new SelectListItem() {Text = "Nepopunjeni", Value="false"}},"-- Popunjenost --", new { @class = "form-control", @onchange = "this.form.submit();" })
+
+        @Html.Label("", "")
+        @Html.DropDownList("objava", new SelectListItem[]{
+                    new SelectListItem() {Text = "Objavljeni", Value="true"},
+                    new SelectListItem() {Text = "Neobjavljeni", Value="false"}},"-- Objava --", new { @class = "form-control", @onchange = "this.form.submit();" })
+
+    </div>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Objava)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Popunjen)
+        </th>
+        <th>
+            Broj prijava
+        </th>
+        <th>
+            Neobrađeno
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.ActionLink("Uredi", "UrediSeminar", new { id = item.IdSeminar })
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Objava)
+                @if (item.Datum < DateTime.Today && item.Objava == true)
+                {
+                    <label style="color:red; font-weight:bold">!</label>
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Popunjen)
+                @if ((item.BrojOdobrenihPredbiljezbi >= item.MaxBrojPolaznika && item.Popunjen == false) || (item.BrojOdobrenihPredbiljezbi < item.MaxBrojPolaznika && item.Popunjen == true))
+                {
+                    <label style="color:red; font-weight:bold">!</label>
+                }
+            </td>
+            <td>
+                @item.BrojOdobrenihPredbiljezbi / @item.MaxBrojPolaznika
+            </td>
+            <td>
+                @item.BrojNeobradjenihPredbiljezbi
+                @if ((item.BrojNeobradjenihPredbiljezbi > 0))
+                {
+                    <label style="color:red; font-weight:bold">!</label>
+                }
+            </td>
+            <td>
+                @Html.ActionLink("Obriši", "ObrisiSeminar", new { id = item.IdSeminar })
+            </td>
+        </tr>
+    }
+
+</table>
+
+<hr />
+
+<p>
+    @Html.ActionLink("Novi seminar", "NoviSeminar") | @Html.ActionLink("Ažuriraj popunjenost", "AzurirajPopunjenost")
+</p>

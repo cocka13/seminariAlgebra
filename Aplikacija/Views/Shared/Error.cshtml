@@ -1,0 +1,20 @@
+﻿@model System.Web.Mvc.HandleErrorInfo
+
+<h2 class="text-danger">Dogodila se greška prilikom obrade Vašeg zahtjeva!</h2>
+
+<h4>Detalji greške:</h4>
+<div>
+    <label>Kontroler:</label>
+    <label>@Model.ControllerName</label>
+</div>
+
+<div>
+    <label>Akcija:</label>
+    <label>@Model.ActionName</label>
+</div>
+
+<div>
+    <label>Greška:</label>
+    <label>@Model.Exception.Message</label>
+</div>
+

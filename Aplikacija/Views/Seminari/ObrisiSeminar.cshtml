@@ -1,0 +1,75 @@
+﻿@model Aplikacija.Models.Seminar
+
+@{
+    ViewBag.Title = "Obriši seminar";
+}
+
+<div>
+    <h2>@ViewBag.Title</h2>
+    <h4>Jeste li sigurni obrisati seminar @Model.Naziv?</h4>
+    <label style="color:red">Brisanjem seminara obrisati će se sve postojeće i povezane predbilježbe!</label>
+</div>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Naziv)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Opis)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Opis)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Datum)
+        </dt>
+
+        <dd>
+            @Model.Datum.ToString("dd.MM.yyyy")
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Objava)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Objava)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Popunjen)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Popunjen)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MaxBrojPolaznika)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MaxBrojPolaznika)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Obriši" class="btn btn-default" /> |
+            @Html.ActionLink("Popis seminara", "Seminari")
+        </div>
+    }
+</div>

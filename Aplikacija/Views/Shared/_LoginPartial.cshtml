@@ -1,0 +1,19 @@
+﻿@if (User.Identity.IsAuthenticated)
+{
+    using (Html.BeginForm("Odjava", "Zaposlenici", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+        @Html.AntiForgeryToken()
+
+        <ul class="nav navbar-nav navbar-right">
+            <li>@Html.ActionLink(User.Identity.Name, "UrediZaposlenika", "Zaposlenici", routeValues: null, htmlAttributes: new { title = "Uredi podatke zaposlenika" })</li>
+            <li>@Html.ActionLink("Zaposlenici", "Zaposlenici", "Zaposlenici", routeValues: null, htmlAttributes: new { title = "Popis zaposlenika" })</li>
+            <li><a href="javascript:document.getElementById('logoutForm').submit()">Odjava</a></li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Prijava", "Prijava", "Zaposlenici", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+    </ul>
+}

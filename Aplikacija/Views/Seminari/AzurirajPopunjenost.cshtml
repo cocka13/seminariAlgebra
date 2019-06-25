@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Aplikacija.Models.Seminar>
+
+@{
+    ViewBag.Title = "Ažuriraj popunjenost";
+}
+
+<div>
+    <h2>@ViewBag.Title</h2>
+    <h4>Ažurirati će se popunjenost svih seminara na osnovi maksimalnog broja polaznika i odobrenih prijava</h4>
+</div>
+
+@if (ViewBag.Message != null)
+{
+    <div>
+        <label style="color:red">@ViewBag.Message</label>
+    </div>
+    <hr />
+    <div>
+        @Html.ActionLink("Popis seminara", "Seminari")
+    </div>
+}
+else
+{
+    <h3>Želite li ažurirati popunjenost sljedećih seminara:</h3>
+    <div>
+        <hr />
+        <ul>
+            @foreach (var item in Model)
+            {
+                <li>@item.Naziv</li>
+            }
+        </ul>
+        <hr />
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-actions no-color">
+                <input type="submit" value="Ažuriraj" class="btn btn-default" /> | @Html.ActionLink("Popis seminara", "Seminari")
+            </div>
+
+        }
+    </div>
+}
+
+

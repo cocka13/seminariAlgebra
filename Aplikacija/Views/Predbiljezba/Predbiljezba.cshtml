@@ -1,0 +1,74 @@
+﻿@model IEnumerable<Aplikacija.Models.ViewModeli.SeminarViewModel>
+
+@{
+    ViewBag.Title = "Predbilježba";
+}
+
+<h2>@ViewBag.Title</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+
+    <div class="form-inline">
+
+        @Html.Label("", "Naziv seminara: ")
+        @Html.TextBox("pretraga")
+
+        <input type="submit" value="Pretraži" class="btn btn-default" />
+
+    </div>
+}
+
+<br />
+
+<table class="table">
+    <tr>
+        <th></th>
+        <th>
+            @Html.DisplayNameFor(model => model.Naziv)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Opis)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Datum)
+        </th>
+        <th>
+            Broj prijava
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @if (item.Popunjen)
+                {
+                    @Html.Label("Popunjeno!")
+                }
+                else
+                {
+                    @Html.ActionLink("Odaberi", "NovaPredbiljezba", "Predbiljezba", new { id = item.IdSeminar }, null)
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Naziv)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Opis)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Datum)
+            </td>
+            <td>
+                @item.BrojOdobrenihPredbiljezbi/@item.MaxBrojPolaznika
+            </td>
+        </tr>
+    }
+
+</table>
+
+
