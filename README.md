@@ -7,4 +7,5 @@ Uz navedeno bilo je potrebno pokazati anonimni i autenticirani pristup određeni
 
 Rad je prihvaćen 1.5.2019. godine.
 
-Deploy aplikacije može se pokrenuti sa https://seminari.azurewebsites.net (ako free account još uvijek radi?)
+Deploy aplikacije može se pokrenuti sa https://seminari.azurewebsites.net (gost/gost)
+(ako je Azure free account još uvijek aktivan?)
