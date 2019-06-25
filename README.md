@@ -6,7 +6,7 @@ Radi se o jednostavnoj MVC aplikaciji koja treba pokazati znanje programiranja b
 
 Rad je prihvaćen 1.5.2019. godine.
 
-Deploy aplikacije može se pokrenuti sa https://seminari.azurewebsites.net (gost/gost)
+Aplikacija je deployana na Azure i može se pokrenuti sa https://seminari.azurewebsites.net (gost/gost)
 (ako je Azure free account još uvijek aktivan?)
 
 NAPOMENA: Frontend nije bio dio sadržaja seminara te se koristio standardan predložak.
