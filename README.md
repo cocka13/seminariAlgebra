@@ -1,4 +1,4 @@
-# seminariAlgebra .NET programer
+# seminariAlgebra .NET programer (C#, SQL, MVC)
 Seminarski rad Algebra: Programer internet aplikacija C#, SQL, MVC
 
 Vlastiti rad napravljen prema projektnom zadatku navedenog seminara.
