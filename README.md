@@ -7,6 +7,6 @@ Radi se o jednostavnoj MVC aplikaciji koja treba pokazati znanje programiranja b
 Rad je pozitivno ocijenjen.
 
 Aplikacija je deployana na Azure i može se pokrenuti sa https://seminari.azurewebsites.net (gost/gost)
-(nažalost, Azure free account nije više free pa aplikacija ne radi)
+(nažalost, Azure free account je istekao pa aplikacija ne radi)
 
 NAPOMENA: Frontend nije bio dio sadržaja seminara te se koristio standardan predložak.
